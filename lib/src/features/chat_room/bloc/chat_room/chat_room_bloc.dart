@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
-import '../models/chat_room.dart';
-import '../services/hive_service.dart';
+import '../../../../services/hive_service.dart';
+import '../../models/chat_room.dart';
 import 'chat_room_event.dart';
 import 'chat_room_state.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import '../bloc/chat_room_bloc.dart';
-import '../bloc/chat_room_event.dart';
-import '../bloc/chat_room_state.dart';
-import 'chat_screen.dart';
-import './create_chat_room_screen.dart';
+import '../bloc/chat_room/chat_room_bloc.dart';
+import '../bloc/chat_room/chat_room_event.dart';
+import '../../chat/screens/chat_screen.dart';
+import '../bloc/chat_room/chat_room_state.dart';
+import 'create_chat_room_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             MaterialPageRoute(
               builder: (_) => const CreateChatRoomScreen(),
             ),
-          ).then((_) => _chatRoomBloc.add(const LoadChatRoomsEvent()));
+          );//.then((_) => _chatRoomBloc.add(const LoadChatRoomsEvent()));
         },
         child: const Icon(Icons.add),
       ),

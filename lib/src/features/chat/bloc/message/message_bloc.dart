@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
-import '../models/message.dart';
-import '../services/hive_service.dart';
+import '../../../../services/hive_service.dart';
+import '../../models/message.dart';
 import 'message_event.dart';
 import 'message_state.dart';
 

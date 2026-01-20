@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import '../models/chat_room.dart';
-import '../bloc/message_bloc.dart';
-import '../bloc/message_event.dart';
-import '../bloc/message_state.dart';
-import '../services/hive_service.dart';
-import './invite_members_screen.dart';
+import '../../../services/hive_service.dart';
+import '../../chat_room/models/chat_room.dart';
+import '../../chat_room/screens/invite_members_screen.dart';
+import '../bloc/message/message_bloc.dart';
+import '../bloc/message/message_event.dart';
+import '../bloc/message/message_state.dart';
 
 class ChatScreen extends StatefulWidget {
   final ChatRoom chatRoom;
@@ -37,11 +37,17 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
             icon: const Icon(Icons.person_add),
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => InviteMembersScreen(chatRoom: widget.chatRoom),
-                ),
-              ).then((_) => _messageBloc.add(LoadMessagesEvent(widget.chatRoom.id)));
+              Navigator.of(context)
+                  .push(
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          InviteMembersScreen(chatRoom: widget.chatRoom),
+                    ),
+                  )
+                  .then(
+                    (_) =>
+                        _messageBloc.add(LoadMessagesEvent(widget.chatRoom.id)),
+                  );
             },
           ),
         ],
@@ -70,7 +76,12 @@ class _ChatScreenState extends State<ChatScreen> {
                             ? Alignment.centerRight
                             : Alignment.centerLeft,
                         child: Container(
-                          margin: const EdgeInsets.all(8),
+                          margin: EdgeInsets.fromLTRB(
+                            isCurrentUser ? 40 : 8,
+                            8,
+                            isCurrentUser ? 8 : 40,
+                            8,
+                          ),
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             color: isCurrentUser ? Colors.blue : Colors.grey,
@@ -84,13 +95,19 @@ class _ChatScreenState extends State<ChatScreen> {
                               Text(
                                 sender?.name ?? 'Unknown',
                                 style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
                                   color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 10,
                                 ),
                               ),
+                              SizedBox(height: 4),
                               Text(
                                 message.content,
-                                style: const TextStyle(color: Colors.white),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
                               ),
                             ],
                           ),
@@ -135,10 +152,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _sendMessage() {
     if (_messageController.text.isEmpty) return;
-    _messageBloc.add(SendMessageEvent(
-      widget.chatRoom.id,
-      _messageController.text,
-    ));
+    _messageBloc.add(
+      SendMessageEvent(widget.chatRoom.id, _messageController.text),
+    );
     _messageController.clear();
   }
 

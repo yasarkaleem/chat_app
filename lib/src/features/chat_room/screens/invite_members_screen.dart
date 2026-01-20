@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import '../../../services/hive_service.dart';
+import '../bloc/chat_room/chat_room_state.dart';
 import '../models/chat_room.dart';
-import '../services/hive_service.dart';
-import '../bloc/chat_room_bloc.dart';
-import '../bloc/chat_room_event.dart';
-import '../bloc/chat_room_state.dart';
+import '../bloc/chat_room/chat_room_bloc.dart';
+import '../bloc/chat_room/chat_room_event.dart';
 
 class InviteMembersScreen extends StatefulWidget {
   final ChatRoom chatRoom;

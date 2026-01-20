@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../models/chat_room.dart';
-import '../models/message.dart';
-import '../models/user.dart';
+import '../features/auth/models/user.dart';
+import '../features/chat/models/message.dart';
+import '../features/chat_room/models/chat_room.dart';
 
 class HiveService {
   static const String chatRoomsBox = 'chat_rooms';

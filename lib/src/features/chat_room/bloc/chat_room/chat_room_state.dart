@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import '../models/chat_room.dart';
+
+import '../../models/chat_room.dart';
 
 abstract class ChatRoomState extends Equatable {
   const ChatRoomState();

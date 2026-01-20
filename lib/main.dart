@@ -1,10 +1,10 @@
-import 'package:chat_app/services/hive_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../bloc/chat_room_bloc.dart';
-import '../bloc/message_bloc.dart';
-import '../screens/home_screen.dart';
-import '../screens/login_screen.dart';
+import 'src/features/auth/screens/login_screen.dart';
+import 'src/features/chat/bloc/message/message_bloc.dart';
+import 'src/features/chat_room/bloc/chat_room/chat_room_bloc.dart';
+import 'src/features/chat_room/screens/home_screen.dart';
+import 'src/services/hive_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Chat App',
+      title: 'Chat App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       home: HiveService.getCurrentUser() == null

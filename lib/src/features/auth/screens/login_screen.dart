@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../services/hive_service.dart';
+import '../../chat_room/screens/home_screen.dart';
 import '../models/user.dart';
-import '../services/hive_service.dart';
-import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
